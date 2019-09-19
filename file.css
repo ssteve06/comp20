@@ -1,0 +1,33 @@
+<style type ="text/css">
+  body,html{height: 100%; margin: 0}
+
+  h1 {color : #2088AA;
+      font-family: georgia,times}
+
+  header h1{text-align:center; font-family: arial, helvetica; font-size: 30pt}
+  header {background-image: url("http://www.tech-dist.com/wp-content/uploads/2016/05/TowerFlo/Water-Water-Wallpaper-High-Resolution-Image.jpg");
+          padding: 10px 10px; width: 100%; box-sizing: border-box}
+
+  nav {background-color: #2088AA; padding: 10px; border-color: #000; }
+  nav a {color: #FFF; font-size: 20px; test-decoration: none; padding: 8px 10px; display: block; }
+
+  nav ul {list-style-type: none; margin: 0; padding: 0; overflow: hidden;}
+  nav li a {display: block; text-align: center; padding: 10px 12px; text-decoration: none;}
+  nav li {float: left; display: block; color: #FFF; text-align: center; padding: 0px; text-decoration: none;}
+  nav li a:hover{background-color:#3099BB; color:#111;}
+
+  .bg {background-image: url("http://www.tech-dist.com/wp-content/uploads/2016/05/TowerFlo/Water-Water-Wallpaper-High-Resolution-Image.jpg");
+      height:100%; padding-top: 0px; background-position: center; background-repeat: no-repeat; background-size: cover;}
+  .caption{text-align: center; font-size: 40px; padding: 100px; color: #FFF}
+  .Intro{text-align: center; color: #FFF; position: absolute; padding: 10px; top: 25%; left: 40%;}
+  .Intro h1{font-size: 60px; font-style: italic; color: #FFF; }
+  .Intro h2{font-size: 50px; font-style: italic; color: #FFF; padding-top: 200px;}
+  p {font-size:20px; line-height: 1.4;}
+  p.center {font-size: 16px; text-align: center}
+  .Mission{font-size: 20px; white-space: none;width: 50%; position: absolute; top: 160px;
+           left: 50%; text-overflow: ellipsis; }
+  .Mission h2{font-size: 30px;}
+  .contact{text-align: center;}
+  .input{text-align: center;}
+  input[type=text]{width: 30%; padding: 12px 20px; margin: 8px 8px; box-sizing: border-box; background-color: #3099BB; color: #FFF;}
+  </style>
