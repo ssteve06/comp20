@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML 5 Doc</title>
+  <style>
+    body,html {height: 100%; padding: 0; margin: 0; }
+    header h1 { font-size: 40px; font-style: italic; font-weight: 1000; text-align: center;
+              font-family: Tahoma, Verdana, Segoe, sans-serif;}
+    header {background-color: #878787;
+            color: #fff; padding: 10px 0px; width: 100%; box-sizing: border-box;}
+
+    nav { background-color: #FF2CCD; padding: 15px 0; position: relative;}
+    nav a {color: #000; font-size: 19px; text-decoration: none;}
+
+    nav ul {list-style-type:none; }
+    nav ul li {display: inline-block; padding: 10px 10px; }
+    input[type=submit] {background-color: #000; border-style: none; color: #FFF; padding: 7px 20px;}
+    input[type=text] {padding: 5px 0px; }
+
+    .main {float: left; width: 70%; position: relative;}
+
+    .main p {font-family: arial; }
+    .main h1 {font-size: 40px; font-style: italic; font-weight: 1000; text-align: center;
+              font-family: Tahoma, Verdana, Segoe, sans-serif;}
+    .main h2 {font-size: 30px; font-style: italic; font-weight: 1000; text-align: left;
+              font-family: Tahoma, Verdana, Segoe, sans-serif;}
+
+    .right {float: right; width: 25%; height: 100%; background-color: #878787; padding: 10px; padding-top: 0px;}
+    .right ul li { padding-right: 10px; padding-bottom: 10px;}
+    .right h1 {font-size: 40px; font-style: italic; font-weight: 1000; text-align: center;
+              font-family: Tahoma, Verdana, Segoe, sans-serif;}
+    .aside {background-color: #FF2CCD; padding: 10px 0px; padding-bottom: 60vh;}
+    .container {min-height:100%; position:relative; display: block; padding-bottom: 10px;}
+
+    footer {bottom: 0; left: 100%;}
+  </style>
+</head>
+<div class="container">
+<body>
+  <header>
+    <h1>Header</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+        <li>
+          <form>
+            <input type='text' name='search' placeholder="Search Query">
+            <input type ='submit' value = "Go!">
+          </form>
+        </li>
+      </ul>
+  </nav>
+</header>
+  <div class="main">
+    <h1>Article heading</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Phasellus eros ligula, pellentesque ac nunc in, congue tristique nunc.
+       Nunc volutpat quis libero vitae accumsan. Quisque fringilla facilisis ornare.
+       Vivamus finibus ultricies volutpat.
+       Integer faucibus, ante vitae interdum euismod,
+       nunc nisl tempus odio, in consequat libero leo non lacus.
+       Donec vitae efficitur ex,
+       vel mattis nulla. Integer id laoreet justo, et lobortis risus.
+       Quisque id felis vulputate, sollicitudin est eu, dictum massa.
+       Donec ut risus ac ipsum egestas molestie nec ac purus.
+       Nulla tempus pharetra gravida. Nunc sit amet nibh nibh.
+     </p>
+     <h2>subsection</h2>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Pellentesque iaculis euismod nisi, nec imperdiet ante tempor vitae.
+        Praesent laoreet massa non erat accumsan, sed semper erat gravida.
+        Morbi justo nisl, tincidunt vitae lorem et, euismod placerat elit.
+     </p>
+     <p>
+        Nunc ut nunc quis odio tincidunt convallis non ac ipsum.
+        Praesent aliquet purus elit.
+        Quisque imperdiet libero fringilla, porta tellus commodo, vehicula felis.
+        Proin eu mi elementum, convallis sapien eu, malesuada orci.
+        Etiam gravida nunc a ornare molestie. Donec id eleifend arcu, et faucibus risus.
+     </p>
+     <h2>Another subsection</h2>
+     <p>Proin pharetra feugiat pretium.
+        Mauris semper mattis sollicitudin.
+        Morbi in condimentum sapien. Vivamus ac enim odio.
+        Aliquam nunc justo, tempus eget lorem sed, ultricies faucibus metus.
+        Nullam iaculis vitae mi at tincidunt.
+        Curabitur luctus vestibulum ipsum, quis varius magna malesuada eget.
+      </p>
+     <p>Nunc vitae facilisis urna.
+        Nam rutrum ut lorem eget varius. Suspendisse potenti.
+        Integer nulla risus, tristique eget massa vitae, hendrerit ullamcorper lorem.
+        Ut efficitur eros nec neque condimentum, sit amet sollicitudin nulla malesuada.
+     </p>
+       <footer>Copyright 2050 by nobody. All Rights reserved.</footer>
+  </div>
+  <aside class="right">
+    <div class="aside">
+      <h1>Related</h1>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+        <li><a href="#">Lorem ipsum dolor sit amet England</a></li>
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">Lorem....</a></li>
+      </ul>
+    </div>
+  </aside>
+</body>
+</div>
+</html>
