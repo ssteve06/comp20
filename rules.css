@@ -1,0 +1,10 @@
+title, genre, year, song {white-space: pre-line; display: block;}
+
+artist{color: #000; background-color: #FFF; width:100%;}
+
+heading {background-color: #1c2545; color: #FFF;
+         font-size: 40px; width:100%; display: block;}
+
+song title{ float: left; font-size: 20px; font-weight: 300; }
+song genre{float: left;  font-size: 15px; }
+song year{float: left;  font-size: 15px; }
