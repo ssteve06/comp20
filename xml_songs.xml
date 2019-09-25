@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="rules.css"?>
+<artist>
+    <heading>Farmhouse by Phish</heading>
+    <song>
+        <title>Farmhouse</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Twist</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Bug</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Back on the Train</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Heavy Things</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Gotta Jibboo</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Dirt</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Piper</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Sleep</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>The Inlaw Joise Wales</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>Sand</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+    <song>
+        <title>First Tube</title>
+        <genre>Classic Rock</genre>
+        <year>2000</year>
+    </song>
+</artist>
