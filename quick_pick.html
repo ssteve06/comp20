@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      * {text-align: center;}
+      html, body { margin: 0px; padding: 0px; }
+      .button{display: inline-block;
+              color: #AA4566; background-color: #FFF;}
+      .prize1, .prize2 {font-size: 20px;
+                        font-weight: bold;}
+      .titles {text-align: center;}
+      .text {background-color: #DD8855; position: absolute;
+             width: 100%; height: 100%; padding: 10px 0px;}
+      header h1 {color: #FFF;}
+      header {background-color: #66DD66; margin: 0;
+              padding: 10px 0px;}
+      /* NOTE:.below {background-color: #66DD66; min-height: 100%; position: relative;}*/
+    </style>
+    <title>Quick Pick</title>
+    <script type="text/javascript" src="quick_pick.js">
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Mass Lotto Game</h1>
+    </header>
+  <div class="text">
+
+    <h1 class="titles">Winning Numbers (unsorted)</h1>
+    <p id="arr_unsort"></p>
+    <script type="text/javascript">
+      create_win(); display_arr("arr_unsort", win_num);
+    </script>
+    <h1 class="titles">Winning Numbers (Sorted)</h1>
+    <p id="arr_sort"></p>
+    <script type="text/javascript">
+       sort_arr(win_num);
+       display_arr("arr_sort", win_num);
+    </script>
+    <h1 class="titles">Your Guess Below</h1>
+    <form class="user_guess" method="post" action="#">
+      <input type="text" id="nums" placeholder="Balls">
+      <input type="text" id="Lucky Ball"
+       placeholder="Lucky Ball">
+      <input type="button" value="Submit" class="button"
+             onclick="deter_pay()">
+    </form>
+    <h1 id="user_guess"></h1>
+    <p id = "user_gues"></p>
+    <h1 id="word_prize"></h1>
+    <span id="prize_txt1"></span>
+    <span id="prize1" class="prize1"></span>
+    <span id="prize_txt2"></span>
+    <span id="prize2" class="prize2"></span>
+  </div>
+  </body>
+</html>
