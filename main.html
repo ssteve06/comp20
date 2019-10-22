@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HW6</title>
+<style type="text/css">
+    header{font-size: 30px; font-weight: 800; padding: 20px; padding-bottom: 40px; right:50%; position: absolute; display: inline-block;}
+  //.head {padding-top: 40px;}
+  //.thumbnail {text_algin:center; padding: 10px;}
+  .title{font-size: 20px; font-weight: 600; }
+  .large{text-align: center; padding-top: 20px;}
+  .body{position: absolute;}
+</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script language="javascript">
+  function art(name, price, small_pic, large_pic){
+    this.name = name;
+    this.price = price;
+    this.small_pic = new Image();
+    (this.small_pic).src = small_pic;
+    this.large_pic = new Image();
+    (this.large_pic).src = large_pic;
+  }
+
+//alert("this")
+$(document).ready(function(){ready();})
+
+function ready()
+{
+  //alert("ths");
+  var art_arr = new Array(5);
+  //$("#head").hide();
+//  alert("t");
+  //$("#first").html("this");
+  //$("#first").css({"font-size":"15px", "border": "2px", "border-size": "1px", "border-color": "#000", "border-style": "solid"});
+  //alert("this");
+  init_arr(art_arr);
+  $("#thumbnail img").hover(function(){
+    var i;
+    for (i = 0; i < art_arr.length; i++) {
+      if($(this).attr('src') == art_arr[i].small_pic.src)
+        break;
+    }
+
+    $("#large").append(art_arr[i].large_pic);
+    $("#large").hide();
+    $("#large").fadeIn(1000);
+  },
+  function(){
+    $("#large").empty();
+  }
+  );
+
+  $("#thumbnail img").click(function(){
+    //alert("me");
+    $("#head").show();
+    var i;
+    for (i = 0; i < art_arr.length; i++) {
+      if($(this).attr('src') == art_arr[i].small_pic.src)
+        break;
+    }
+
+    $("#head").html("<span>Title: </span>" + art_arr[i].name);
+    $("#head").html($("#head").html() + "<br> <span>Price: </span>" + art_arr[i].price);
+    var space = i * 210 + 30 + "px";
+    $("#head").css({"padding-left": space, "position" : "absolute", "padding-top": "65px"})
+    $("span").addClass("title");
+    //$("#thumbnail").prepend($("#head"));
+    $("#head").delay(5000).hide(0);
+  })
+  //alert("this")
+}
+
+function init_arr(art_arr)
+{
+  art_arr[0] = new art("Starry Night", 1000000, "https://cdn.shopify.com/s/files/1/2582/1304/products/Starry_Night_Paint_By_Number_1280x.progressive.jpg?v=1513345949", "https://cdn.shopify.com/s/files/1/2582/1304/products/Starry_Night_Paint_By_Number_1280x.progressive.jpg?v=1513345949");
+  art_arr[1] = new art("toil today", 300, "https://images.fineartamerica.com/images-medium-large-5/toil-today-dream-tonight-diptych-painting-number-1-after-van-gogh-paul-hilario.jpg", "https://images.fineartamerica.com/images-medium-large-5/toil-today-dream-tonight-diptych-painting-number-1-after-van-gogh-paul-hilario.jpg")
+  art_arr[2] = new art("mulberry tree", 45, "https://www.1st-art-gallery.com/frame-preview/16750484.jpg?sku=Unframed&thumb=0&huge=1", "https://www.1st-art-gallery.com/frame-preview/16750484.jpg?sku=Unframed&thumb=0&huge=1");
+  art_arr[3] = new art("Sunflowers", 34, "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/sei54258302-0.jpg", "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/sei54258302-0.jpg");
+  art_arr[4] = new art("Portrait", 65, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstQzD4YThZjnw1knrw2tMZiXGFTKaU7ik-L7pEwXtYYjZ0y6C", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstQzD4YThZjnw1knrw2tMZiXGFTKaU7ik-L7pEwXtYYjZ0y6C");
+  for (var i = 0; i < art_arr.length; i++) {
+    $(art_arr[i].small_pic).width(150);
+    $(art_arr[i].small_pic).height(150);
+    $("#thumbnail").append(art_arr[i].small_pic);
+    $(art_arr[i].large_pic).width(600);
+    $(art_arr[i].large_pic).height(350);
+  }
+  $("#thumbnail").css({"text_algin":"center", "display":"inline-block", "padding-top":"100px"});
+  $("#thumbnail img").css({"padding":"0px 30px","padding-top":"10px", "text_algin":"center", "display":"inline-block"});
+}
+
+</script>
+</head>
+
+<body>
+  <header>
+    The Gallary
+  </header>
+  <div class="head" id="head"></div>
+  <div id="thumbnail" class="thumbnail"></div>
+  <div id="large" class="large"></div>
+ <!--<div id="first"></div>-->
+
+</body>
+</html>
