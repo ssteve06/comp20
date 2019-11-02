@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JSON practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="setlist.json" charset="utf-8"></script>
+    <style type=text/css>
+      //span{display: inline;}
+      .other {font-size: 15px;}
+      .serial{display: inline-block;}
+      .form{text-align: center;}
+      .form h1{padding-top: 20px;}
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#serial").append(JSON.stringify(setlist) + "<br>"); // display serial
+
+        for(index in setlist.songs){ // display all songs in friendly format
+          display_song(index, "serial")
+        }
+
+        $("form").prepend("<h1>Select a Genre to filter</h1>");
+        var genre_arr = get_genres();
+
+        create_form(genre_arr);
+
+        $("#button").click(function(){onclick(genre_arr)});
+
+      })
+
+      // displays the songs at index -index in setlist array and
+      // displays them in div name div
+      function display_song(index, div){
+        newspan_title = document.createElement("span");
+        newspan_other = document.createElement("span");
+        $(newspan_title).css({"font-size":"20px", "font-weight":"800"});
+        newspan_title.innerHTML =  "<br>" + (setlist.songs[index].title) + "<br>";
+        newspan_other.innerHTML = "Artist: " + setlist.songs[index].artist + "<br>";
+        newspan_other.innerHTML += "Genre: " + setlist.songs[index].genre + "<br>";
+        newspan_other.innerHTML += "Released: " + setlist.songs[index].year + "<br>";
+        container = document.createElement("div");
+        $(container).append(newspan_title, newspan_other);
+        $(container).css({"display":"inline-block", "padding":"0px 10px"});
+        $("#" + div).append(container);
+      }
+
+
+      // searches the setlist object for all genres and returns them as a
+      // string array
+      function get_genres(){
+        var genre_arr = new Array();
+        //var curr_genre, in_genre_arr;
+        for(x in setlist.songs){
+          in_genre_arr = false;
+          curr_genre = setlist.songs[x].genre;
+          for(index in genre_arr){
+            if(curr_genre == genre_arr[index])
+              in_genre_arr = true;
+          }
+          if(!in_genre_arr)
+            genre_arr.push(curr_genre);
+        }
+        return genre_arr;
+      }
+
+      // creates the select form using all the genres in genre_arr
+      function create_form(genre_arr){
+        new_option = document.createElement("option")
+        $(new_option).attr("selected", "selected")
+        $(new_option).attr("value", "-1")
+        $(new_option).html("Choose here")
+        $("select").append(new_option)
+        for(i in genre_arr){
+          new_option = document.createElement("option");
+          $(new_option).html(genre_arr[i]);
+          $(new_option).attr("value", i)
+          $("select").append(new_option);
+        }
+      }
+
+      //called when button is pressed
+      // search and display all songs in setlist that match current
+      // genre selected in the form
+      function onclick(genre_arr){
+        var genre = $("select.select").children("option:selected").val();
+          if(genre == -1)
+            return;
+        $("#container").empty();
+        for(index in setlist.songs){
+          if(genre_arr[genre] == setlist.songs[index].genre)
+            display_title(index)
+        }
+      }
+
+      // display just song title at index in setlist
+      function display_title(index){
+        newspan_title = document.createElement("span");
+        $(newspan_title).css({"font-size":"20px", "font-weight":"800"});
+        newspan_title.innerHTML =  "<br>" + (setlist.songs[index].title) + "<br>";
+        $("#container").css({"display":"inline-block", "padding":"0px 10px"});
+        $("#container").append(newspan_title);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="serial" id="serial"></div>
+
+    <div class="form" id="form_div">
+      <form id="filter" class="filter">
+        <select class="select" id="select">
+        </select>
+        <button type="button" id="button">Filter</button>
+      </form>
+
+      <div class="form" id="container"></div>
+    </div>
+  </body>
+</html>
