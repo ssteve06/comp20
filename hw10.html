@@ -13,11 +13,17 @@
         //request.setRequestHeader(Access-Control-Allow-Origin, true);
         request.onreadystatechange = function(){
             console.log("state change");
-            $("#test").append("<h2>Satet Cahnge!</h2>");
+            if(request.status == 200)
+                create_obj(request);
         }
 
         request.open("GET", "https://ssteve06.github.io/comp20/setlist.json", true);
         request.send();
+        
+        function create_obj(request){
+            var obj = JSON.parse(request.responseTest);
+            ("#test").html(obj["songs"]);
+        }
     </script>
 </head>
 <body>
