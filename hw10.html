@@ -21,8 +21,8 @@
         request.send();
         
         function create_obj(request){
-            var obj = JSON.parse(request.responseTest);
-            $("#test").html(obj["songs"]);
+            var obj = JSON.parse(request.responseText);
+            $("#test").html(obj["songs"][2]["title"]);
         }
     </script>
 </head>
