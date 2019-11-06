@@ -13,7 +13,7 @@
         //request.setRequestHeader(Access-Control-Allow-Origin, true);
         request.onreadystatechange = function(){
             console.log("state change");
-            if(request.status == 200)
+            if(request.status == 200 && request.readyState == 4)
                 create_obj(request);
         }
 
