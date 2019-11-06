@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    Access-Control-Allow-Origin: *
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW10</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var request = new XMLHttpRequest();
+        //request.setRequestHeader(Access-Control-Allow-Origin, true);
+        request.onreadystatechange = function(){
+            console.log("state change");
+        }
+
+        request.open("GET", "https://ssteve06.github.io/comp20/setlist.json", true);
+        request.send();
+    </script>
+</head>
+<body>
+<div id="test" class="test"><h1>thid is the header</h1></div>
+    
+</body>
+</html>
