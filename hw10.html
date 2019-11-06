@@ -17,12 +17,13 @@
                 create_obj(request);
         }
 
-        request.open("GET", "https://ssteve06.github.io/comp20/setlist2.json", true);
+        request.open("GET", "http://happycoding.io/tutorials/javascript/example-ajax-files/simple-welcome.txt", true);
         request.send();
         
         function create_obj(request){
-            var obj = JSON.parse(request.responseText);
-            $("#test").html(obj["songs"][2]["title"]);
+            alert(JSON.stringify(request.responseText));
+            //var obj = JSON.parse(request.responseText);
+            //$("#test").html(obj["songs"][2]["title"]);
         }
     </script>
 </head>
