@@ -20,8 +20,10 @@
             //new_req.setRequestHeader(Access-Control-Allow-Headers, *);
             alert("thisdhi");
             new_req.onreadystatechange = function(){
+                alert(1)
                 console.log(new_req.readyState)
                 console.log(new_req.status);
+                alert("here")
                 alert(new_req.readyState);
                 if(request.readyState == 5)
                     document.write(2312)
