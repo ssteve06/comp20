@@ -19,7 +19,7 @@
             new_req.open("GET", JSON.stringify(obj["repos_url"]), true);
             alert("thisdhi")
             new_req.onreadystatechange = function(){
-                console.log(new_req.readyState);
+                alert(new_req.readyState);
                 if(request.readyState == 5)
                     document.write(2312)
                 if(new_req.readyState == 4)
