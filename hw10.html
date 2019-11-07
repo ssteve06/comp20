@@ -2,33 +2,73 @@
 
 <html lang="en">
 <head>
-    Access-Control-Allow-Origin: *
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HW10</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        var request = new XMLHttpRequest();
-        //request.setRequestHeader(Access-Control-Allow-Origin, true);
-        request.onreadystatechange = function(){
-            console.log("state change");
-            if(request.status == 200 && request.readyState == 4)
-                create_obj(request);
+
+        function create_obj(request){
+            alert(request.responseText);
+
+            var obj = JSON.parse(request.responseText);
+            alert(obj["repos_url"]);
+            console.clear();
+            new_req = new XMLHttpRequest();
+            new_req.open("GET", JSON.stringify(obj["repos_url"]), true);
+            alert("thisdhi")
+            new_req.onreadystatechange = function(){
+                console.log(new_req.readyState);
+                if(request.readyState == 5)
+                    document.write(2312)
+                if(new_req.readyState == 4)
+                    alert(new_req.responseText);
+            }
+            alert("hreh 3")
+            new_req.send();
+            alert(new_req.responseText)
+            //repos = JSON.parse(request.responseText);
+            //alert(repos[0]);
+            //alert(obj["songs"][2]["title"])
+            //$("#test").html(obj["songs"][2]["title"])
+            //$("#test").html(request.responseText);
         }
 
-        request.open("GET", "http://happycoding.io/tutorials/javascript/example-ajax-files/simple-welcome.txt", true);
-        request.send();
+        $(document).ready(function(){
+            request = new XMLHttpRequest();
+            request.open("GET", "https://api.github.com/users/octocat", true);
+            request.onreadystatechange = function(){
+                console.log(request.readyState);
+                if(request.readyState == 5)
+                    document.write(2312)
+                if(request.readyState == 4)
+                    create_obj(request)
+            }
+            $("#button").click(function(){ 
+                value = $("#username").val();
+                alert(value)
+                value = "https://api.github.com/users/" + value;
+                request.open("GET", value, true);
+                request.send();
+                alert("sent")
+                })
+        })
+
         
-        function create_obj(request){
-            alert(JSON.stringify(request.responseText));
-            //var obj = JSON.parse(request.responseText);
-            //$("#test").html(obj["songs"][2]["title"]);
-        }
+         
+        
     </script>
 </head>
 <body>
 <div id="test" class="test"><h1>thid is the header</h1></div>
+<div>
+    <form>
+        <input type="text" id="username"></input>
+        <button id="button">Submit</button>
+    </form>
+</div>
+
     
 </body>
 </html>
