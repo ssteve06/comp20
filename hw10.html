@@ -1,127 +1,93 @@
-<!DOCTYPE html>
 
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HW10</title>
+	<title>Messages</title>
+    <meta charset="utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+	<script>
+        $(document).ready(function(){
+            $("#button").on("click", function(){
+                $("#data").empty();
+                username = $("#username").val();
+                send_req(username);
+            })
+        });
 
-        function create_obj(request){
-            alert(request.responseText);
+		function send_req(username) {
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
 
-            var obj = JSON.parse(request.responseText);
-            alert(obj["repos_url"]);
-            console.clear();
-            new_req = new XMLHttpRequest();
-            new_req.open("GET", JSON.stringify(obj["repos_url"]), true);
-            //new_req.setRequestHeader(Access-Control-Allow-Headers, *);
-            alert("thisdhi");
-            new_req.onreadystatechange = function(){
-                alert(1)
-                console.log(new_req.readyState)
-                console.log(new_req.status);
-                alert("here")
-                alert(new_req.readyState);
-                if(request.readyState == 5)
-                    document.write(2312)
-                if(new_req.readyState == 4)
-                    alert(new_req.responseText);
-            }
-            alert("hreh 3")
-            new_req.send();
-            //alert(new_req.responseText)
-            //repos = JSON.parse(request.responseText);
-            //alert(repos[0]);
-            //alert(obj["songs"][2]["title"])
-            //$("#test").html(obj["songs"][2]["title"])
-            //$("#test").html(request.responseText);
+			request.open("GET", "https://api.github.com/users/" + username, true);
+
+			console.log("2 - opened request file");
+
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+
+				if (request.readyState == 4 && request.status == 200) {
+
+					result = request.responseText;
+					data = JSON.parse(result);
+                    $("#data").html(data["login"]);
+                    repos(data);
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request.send();
+            //JSON.parse(obj);
+			console.log("4 - Request sent");
+            //request.open("GET", animals["repos"], true);
+            //request.send();
+
+
+		}
+
+    function repos(data){
+        console.log("1 - entered repos func");
+        request.open("GET", data["repos_url"], true);
+        console.log("changed open params");
+
+        request.onreadystatechange = function(){
+            console.log("3 - ready state fire ");
+
+            if(request.readyState == 4 && request.status == 200)
+                result = request.responseText;
+                obj = JSON.parse(result);
+                console.log("parsed obj");
+                $("#data").append(JSON.stringify(obj));
+
         }
 
-        $(document).ready(function(){
-            /*$.ajax({
+        request.send();
+        console.log("4 second request sent");
 
-  // The 'type' property sets the HTTP method.
-  // A value of 'PUT' or 'DELETE' will trigger a preflight request.
-  type: 'GET',
-
-  // The URL to make the request to.
-  url: 'https://api.github.com/users/octocat',
-
-  // The 'contentType' property sets the 'Content-Type' header.
-  // The JQuery default for this property is
-  // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
-  // a preflight. If you set this value to anything other than
-  // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
-  // you will trigger a preflight request.
-  contentType: 'text/plain',
-
-  xhrFields: {
-    // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
-    // This can be used to set the 'withCredentials' property.
-    // Set the value to 'true' if you'd like to pass cookies to the server.
-    // If this is enabled, your server must respond with the header
-    // 'Access-Control-Allow-Credentials: true'.
-    withCredentials: false
-  },
-
-  headers: {
-
-    // Set any custom headers here.
-    // If you set any non-simple headers, your server must include these
-    // headers in the 'Access-Control-Allow-Headers' response header.
-  },
-
-  success: function() {
-      alert($(this).responseText)
-      alert("suc")
-    // Here's where you handle a successful response.
-  },
-
-  error: function() {
-      alert("fail")
-    // Here's where you handle an error response.
-    // Note that if the error was due to a CORS issue,
-    // this function will still fire, but there won't be any additional
-    // information about the error.
-  }
-});*/
-        alert("end ajax")
-            request = new XMLHttpRequest();
-            request.open("GET", "https://api.github.com/users/octocat", true);
-            request.onreadystatechange = function(){
-                console.log(request.readyState);
-                if(request.readyState == 5)
-                    document.write(2312)
-                if(request.readyState == 4)
-                    create_obj(request)
-            }
-            $("#button").click(function(){
-                value = $("#username").val();
-                alert(value)
-                value = "https://api.github.com/users/" + value;
-                request.open("GET", value, true);
-                request.send();
-                alert("sent")
-                })
-        })
-
-
-
-
-    </script>
+    }
+	</script>
 </head>
+
+
 <body>
-<div id="test" class="test"><h1>thid is the header</h1></div>
-<div>
-    <form>
-        <input type="text" id="username"></input>
-        <button id="button">Submit</button>
-    </form>
-</div>
 
-
+	<h1>Animals</h1>
+    <div id="data">Loading...</div>
+    <div>
+        <form>
+            <input type="text" id="username"></input>
+            <input id="button" type="button" value="Submit"></input>
+        </form>
+    </div>
 </body>
 </html>
