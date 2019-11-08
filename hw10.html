@@ -51,8 +51,6 @@
 			console.log("4 - Request sent");
             //request.open("GET", animals["repos"], true);
             //request.send();
-
-
 		}
 
     function repos(data){
@@ -63,17 +61,46 @@
         request.onreadystatechange = function(){
             console.log("3 - ready state fire ");
 
-            if(request.readyState == 4 && request.status == 200)
+            if(request.readyState == 4 && request.status == 200){
                 result = request.responseText;
                 obj = JSON.parse(result);
                 console.log("parsed obj, printing repos");
-                $("#data").append(JSON.stringify(obj));
+                //$("#data").append(JSON.stringify(obj));
+                console.log("obj.length = " + obj.length)
+                display_repos(obj);
+            }
+            else if(request.readyState == 4)
+                $("#data").html("bad user name")
+            
 
         }
 
         request.send();
         console.log("4 second request sent");
 
+    }
+
+    function display_repos(obj){
+        console.log("in last func")
+        if(obj.length == 0){
+            $("#repos").html("User is private");
+            return;
+        }
+        $("#repos").html("User " + obj[0]["owner"]["login"] + " has " + obj.length + " repositories<br>");
+                for(var i = 0; i < obj.length; i++){
+                    var curr = document.createElement("span");
+                    var link = document.createElement("a");
+                    $(curr).append("<br><br>Repository" + (i + 1) + "<br>");
+                    $(curr).append("Name: " + obj[i]["name"] + "</br>");
+                        if(obj[i]["description"] != null)
+                            $(curr).append("Description: " + obj[i]["description"] + "<br>");                       
+                    $(link).attr("href", obj[i]["html_url"]).text(obj[i]["html_url"])
+                    $(curr).append("Link: ")
+                    $(curr).append(link);
+                    $(curr).append("<br>Created on: " + obj[i]["created_at"].slice(0, obj[i]["created_at"].indexOf('T')));
+                    $(curr).append("<br>Most recently updated on: " + obj[i]["updated_at"].slice(0, obj[i]["updated_at"].indexOf('T')) + "</br>");
+                    $("#repos").append(curr);
+                }
     }
 	</script>
 </head>
@@ -85,9 +112,10 @@
     <div id="data">Loading...</div>
     <div>
         <form>
-            <input type="text" id="username"></input>
+            <input type="text" id="username" autofocus></input>
             <input id="button" type="button" value="Submit"></input>
         </form>
     </div>
+    <div id="repos"></div>
 </body>
 </html>
