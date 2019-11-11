@@ -6,6 +6,48 @@
     <meta charset="utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
+        var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		var answer = this.responseText;
+        console.log(answer);
+        answer = JSON.parse(answer);
+        index = Math.random() * 25;
+        index = parseInt(index);
+        $("#trump").html(JSON.stringify(answer["_embedded"]["tags"][index]["value"]))
+	}
+});
+
+xhr.open("GET", "https://matchilling-tronald-dump-v1.p.rapidapi.com/tag/Hillary%20Clinton");
+xhr.setRequestHeader("x-rapidapi-host", "matchilling-tronald-dump-v1.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "8bca358e76msh4266e57b4477c3ep10a968jsn65ec3c9e058a");
+xhr.send(data);
+
+
+        /*var request2 = new XMLHttpRequest();
+        console.log("seonc obj created");
+        request2.withCredentials = true;
+        request2.open("GET", "https://matchilling-tronald-dump-v1.p.rapidapi.com/tag/%7Btag%7D", true);
+        request2.setRequestHeader("x-radidapi-host", "matchilling-tronald-dump-v1.p.rapidapi.com");
+        request2.setRequestHeader("x-radidapi-key", "8bca358e76msh4266e57b4477c3ep10a968jsn65ec3c9e058a");
+        console.log("reqyest 2 headers created ");
+
+        request2.onreadystatechange = function() {
+            console.log("3- ready state changed ");
+
+            if(request2.readyState == 4 && request2.status == 200){
+                console.log("success request2")
+                answer = request2.responseText;
+                alert(answer);
+            }
+        }
+        request2.send();*/
+
+
         $(document).ready(function(){
             $("#button").on("click", function(){
                 $("#data").empty();
@@ -108,8 +150,6 @@
 
 <body>
 
-	<h1>Animals</h1>
-    <div id="data">Loading...</div>
     <div>
         <form>
             <input type="text" id="username" autofocus></input>
